@@ -4,6 +4,8 @@
 const express = require("express")
 const app = express()
 const port = 3100
+// aggiungo qui il percorso
+const PostRouter = require("./routes/posts")
 
 // avvio server di express nella porta che in questo caso è il mio pc
 app.listen(port, () => {
@@ -14,3 +16,6 @@ app.listen(port, () => {
 app.get("/", (req, res) => (
     res.send("Benvenuti nel mio blog")
 ))
+
+// registro router 
+app.use('/api/posts', PostRouter)

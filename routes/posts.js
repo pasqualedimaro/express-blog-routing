@@ -1,4 +1,7 @@
-
+//inizializzo anche qui express, uso la stessa porta del server dell'index e poi uso una costante router per i CRUDS
+const express = require('express')
+const router = express.Router()
+const port = 3100
 
 const posts = [
   {
@@ -46,13 +49,35 @@ const posts = [
   },
 ];
 
+//index
+router.get('/', function (req, res){
+    res.send('lista dei post')
+})
+//show
+router.get('/:id', function (req, res){
+    const id = req.params.id
+    res.send('dettagli del post' + req.params.id);
+})
+//store
+router.post('/', function (req, res){
+    res.send('creazione nuovo post')
+})
+//update
+router.put('/:id', function (req, res){
+    const id = req.params.id
+    res.send('modifica totale del post'+ req.params.id)
+})
+//modify
+router.patch('/:id', function (req, res){
+    const id = req.params.id
+    res.send('modifica parziale del post'+ req.params.id)
+})
+//destroy
+router.delete('/:id', function (req, res){
+    const id = req.params.id
+    res.send('eliminazione del post'+ req.params.id)
+})
 
 
 
-
-
-
-
-
-
-module.exports = posts;
+module.exports = router;
