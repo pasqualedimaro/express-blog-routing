@@ -55,9 +55,11 @@ router.get('/', function (req, res){
     res.json(posts)
 })
 //show
+//Bonus 2 uso parseint l'id arriva come string e quindi lo converto in numero, e con find lo cerco nell'array
 router.get('/:id', function (req, res){
-    const id = req.params.id
-    res.send('dettagli del post' + req.params.id);
+    const id = parseInt(req.params.id)
+    const postDetail = posts.find(element => element.id === id)
+    res.json(postDetail);
 })
 //store
 router.post('/', function (req, res){
