@@ -50,8 +50,9 @@ const posts = [
 ];
 
 //index
+//BONUS sostituisco res.send con res.json post per vedere la lista dei post
 router.get('/', function (req, res){
-    res.send('lista dei post')
+    res.json(posts)
 })
 //show
 router.get('/:id', function (req, res){
